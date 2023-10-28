@@ -11,24 +11,25 @@ public class FileReader {
         try {
             stream = new java.io.FileReader(file);
         } catch (IOException e) {
-            System.out.println("Can't open stream.");
+            e.printStackTrace();
         }
         StringBuilder sb = new StringBuilder();
         while (true) {
-            int elem;
+            int elem = 0;
             try {
+                assert stream != null;
                 elem = stream.read();
                 if (elem == -1)
                     break;
             } catch (IOException e) {
-                throw new RuntimeException(e);
+                System.out.println("Can't read.");
             }
             sb.append((char) elem);
         }
         try {
             stream.close();
         } catch (IOException e) {
-            throw new RuntimeException(e);
+            System.out.println("Can't close");
         }
         String[] array = getStringsFromFile(sb);
         String name = array[0];

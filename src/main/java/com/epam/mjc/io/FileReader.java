@@ -22,14 +22,14 @@ public class FileReader {
                 if (elem == -1)
                     break;
             } catch (IOException e) {
-                System.out.println("Can't read.");
+                e.printStackTrace();
             }
             sb.append((char) elem);
         }
         try {
             stream.close();
         } catch (IOException e) {
-            System.out.println("Can't close");
+            e.printStackTrace();
         }
         String[] array = getStringsFromFile(sb);
         String name = array[0];
